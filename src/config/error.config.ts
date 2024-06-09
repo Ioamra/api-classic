@@ -7,7 +7,7 @@ export enum ErrorCode {
     MISSING_HEADERS = "Code 460",
     ACCESS_DENIED = "Code 470",
     CONTENT_NOT_ALLOWED_FOR_USER = "Code 471",
-    ID_USER_NOT_FOUND = "Code 480",
+    id_users_NOT_FOUND = "Code 480",
     UPDATE_FAILED = "Code 490",
     NO_FILE_SEND = "Code 405",
     WRONG_FILE_FORMAT = "Code 415",

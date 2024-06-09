@@ -1,16 +1,28 @@
 import { Pool } from 'pg';
 
 export const pool = new Pool({
-    host: process.env.MODE === 'prod' ? process.env.DB_HOST : process.env.LOCAL_DB_HOST,
-    port: process.env.MODE === 'prod' ? parseInt(process.env.DB_PORT as string) : parseInt(process.env.LOCAL_DB_PORT as string),
+    host: 'localhost',
+    port: 5432,
     user: 'postgres',
-    password: () => process.env.LOCAL_DB_PASSWORD!,
-    database: process.env.MODE === 'prod' ? process.env.DB_NAME : process.env.LOCAL_DB_NAME,
+    password: "postgres",
+    database: 'api_classic',
     idleTimeoutMillis: 3000,
     connectionTimeoutMillis: 20000,
     max: 20000,
     allowExitOnIdle: true,
 });
+
+// export const pool = new Pool({
+//     host: process.env.MODE === 'prod' ? process.env.DB_HOST : process.env.LOCAL_DB_HOST,
+//     port: process.env.MODE === 'prod' ? parseInt(process.env.DB_PORT as string) : parseInt(process.env.LOCAL_DB_PORT as string),
+//     user: 'postgres',
+//     password: () => process.env.LOCAL_DB_PASSWORD!,
+//     database: process.env.MODE === 'prod' ? process.env.DB_NAME : process.env.LOCAL_DB_NAME,
+//     idleTimeoutMillis: 3000,
+//     connectionTimeoutMillis: 20000,
+//     max: 20000,
+//     allowExitOnIdle: true,
+// });
 
 pool.connect((err, client, release) => {
     if (err) {

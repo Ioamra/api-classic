@@ -1,5 +1,6 @@
 import express, { Request, Response } from "express";
 import { logIn } from "../../controllers/auth-controllers/logIn.controller";
+import { register } from "../../controllers/auth-controllers/register.controller";
 
 export const authRouter = express.Router();
 
@@ -12,9 +13,14 @@ export const authRouter = express.Router();
 // });
 
 authRouter.post('/login', async (req: Request, res: Response) => {
-    let mail = req.body.mail as string;
-    let password = req.body.password as string;
-    logIn(mail, password, res);
+    let email_users = req.body.email_users as string;
+    let password_users = req.body.password_users as string;
+    logIn(email_users, password_users, res);
+});
+
+authRouter.post('/register', async (req: Request, res: Response) => {
+    let data = req.body;
+    register(data, res);
 });
 
 // authRouter.post('/forgot-password', async (req: Request, res: Response) => {
