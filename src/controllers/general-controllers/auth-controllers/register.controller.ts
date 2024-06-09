@@ -19,7 +19,7 @@ export const register = async (data: Users.IAddUsers, res: Response) => {
         const { rows } = await client.query(`
             INSERT INTO users (username_users, name_users, email_users, password_users)
             VALUES ($1, $2, $3, $4)
-            RETURNING id_users;
+            RETURNING id_users, role_users;
             `, [
                 data.username_users, 
                 data.name_users, 

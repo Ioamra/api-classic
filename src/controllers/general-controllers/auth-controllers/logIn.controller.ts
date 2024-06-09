@@ -8,7 +8,7 @@ export const logIn = async (email_users: string, password_users: string, res: Re
     try {
         await client.query("BEGIN");
 
-        const { rows, rowCount } = await client.query(`SELECT id_users FROM users WHERE email_users = $1 AND password_users = $2;`, [email_users, password_users])
+        const { rows, rowCount } = await client.query(`SELECT id_users, role_users FROM users WHERE email_users = $1 AND password_users = $2;`, [email_users, password_users])
         if (rowCount == 0) {
             throw "user not found"
         }
