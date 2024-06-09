@@ -12,7 +12,7 @@ export const getMyInfo = async (id_users: number, res: Response) => {
     }catch(e){
         await client.query('ROLLBACK');
         res.status(400).send({
-            message: 'Error test :' + e,
+            message: 'Error getMyInfo :' + e,
         });
     }finally{
         client.release(true);
