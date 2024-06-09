@@ -13,7 +13,7 @@ export const logIn = async (email_users: string, password_users: string, res: Re
             throw "user not found"
         }
         const payload = { id_users: rows[0].id_users, role_users: rows[0].role_users };
-        const token = AuthenticationService.generateToken(payload, '5h');
+        const token = AuthenticationService.generateToken(payload);
 
         res.status(200).send({
             message: "Connection successfull",
