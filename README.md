@@ -20,24 +20,31 @@ npm i
 Créer le fichier 
 ```.env```
 dans ```src/config``` et remplacer les valeurs.
-```bash 
+```bash
 # 'prod' or 'dev' #
-MODE = 'dev'
+MODE = dev
 
 #EXPRESS CONNECTION
 
 PORT_PROD = 3000
+HOST_PROD = localhost
+
 PORT_DEV = 3000
-HOST_PROD = 'HOST'
-HOST_DEV = 'localhost'
+HOST_DEV = localhost
 
 # BDD CONNECTION
 
-DB_HOST = 'DB_HOST'
-DB_USER = 'DB_USER'
-DB_PASSWORD = 'DB_PASSWORD'
-DB_NAME = 'DB_NAME'
-DB_PORT = 'DB_PORT'
+DB_HOST = "localhost"
+DB_USER = "postgres"
+DB_PASSWORD = "postgres"
+DB_NAME = "api_classic"
+DB_PORT = 5432
+
+LOCAL_DB_HOST = "localhost"
+LOCAL_DB_USER = "postgres"
+LOCAL_DB_PASSWORD = "postgres"
+LOCAL_DB_NAME = "api_classic"
+LOCAL_DB_PORT = 5432
 
 #SALAGE
 
@@ -45,10 +52,12 @@ SALT = 'SALT'
 
 #Clés et configuration pour les JWT
 
-JWT_PRIVATE_KEY=JWT_PRIVATE_KEY
-JWT_PUBLIC_KEY=JWT_PUBLIC_KEY
-JWT_ALGORITHM=JWT_ALGORITHM
-JWT_EXPIRES_IN=JWT_EXPIRES_IN
+JWT_PRIVATE_KEY="-----BEGIN RSA PRIVATE KEY-----   -----END RSA PRIVATE KEY-----"
+
+JWT_PUBLIC_KEY="-----BEGIN RSA PUBLIC KEY-----   -----END RSA PUBLIC KEY-----"
+
+JWT_ALGORITHM='RS256'
+JWT_EXPIRES_IN='5h'
 
 #Clés et configuration pour les refresh JWT
 
