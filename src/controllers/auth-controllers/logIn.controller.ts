@@ -1,14 +1,19 @@
-import { Response, Request } from "express";
+import { Response } from "express";
 import { pool } from "../../config/db.config";
+import AuthenticationService from "../../config/jwt.config";
 
-export const logIn = async (mail: string, password: string, res: Response, req: Request) => {
+export const logIn = async (mail: string, password: string, res: Response) => {
     const client = await pool.connect();
 
     try {
         await client.query("BEGIN");
+
+        const payload = { id_user: 1, role_user: 'admin' };
+        const token = AuthenticationService.generateToken(payload, '1h');
+
         res.status(200).send({
             message: "Connection successfull",
-            data: ""
+            data: token
             });
         await client.query("COMMIT");
 

@@ -3,6 +3,7 @@ import express, { Express } from 'express';
 import helmet from "helmet";
 import { testRouter } from './test-routes/test.routes';
 import { Middleware } from '../middleware/middleware.config';
+import { authRouter } from './auth-routes/auth.routes';
 
 export default class RoutingConfig {
     public static init(app: Express): void {
@@ -12,7 +13,7 @@ export default class RoutingConfig {
         app.use(helmet());
 
         // Import des routes
+        app.use('/auth', authRouter);
         app.use('/test', Middleware.requireAuthentication, testRouter);
-
     }
 };

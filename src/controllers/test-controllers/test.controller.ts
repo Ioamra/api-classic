@@ -8,7 +8,7 @@ export const testMyAPI = async (test: string, res: Response) => {
         
         await client.query('COMMIT');
         res.status(200).send({
-            message: 'Working test',
+            message: 'Working test ' + test,
         });
     }catch(e){
         await client.query('ROLLBACK');

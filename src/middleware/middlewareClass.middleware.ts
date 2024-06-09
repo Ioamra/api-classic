@@ -1,6 +1,7 @@
 import { Request, Response, NextFunction } from 'express';
 import { pool } from "../config/db.config";
 import { ErrorCode } from '../config/error.config';
+import AuthenticationService from '../config/jwt.config';
 
 export class MiddlewareFunction {
 
@@ -11,11 +12,11 @@ export class MiddlewareFunction {
             if (!token) {
                 throw ErrorCode.MISSING_HEADERS;
             };
-            
-            const { rowCount } = await client.query('SELECT * FROM api_key WHERE key_api_key = $1', [token]);
-            if(rowCount === 0){
-                throw ErrorCode.ACCESS_DENIED;
-            };
+
+            const decodedToken = AuthenticationService.verifyToken(token);
+            if (typeof decodedToken === 'string') {
+                throw ErrorCode.MISSING_HEADERS;
+            }
 
             return next();
         } catch (err) {
