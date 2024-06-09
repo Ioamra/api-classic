@@ -3,6 +3,6 @@ import { getAllUsers } from "../../controllers/admin-controllers/users-admin-con
 
 export const adminRouter = express.Router();
 
-adminRouter.get('/getAll', async (req: Request, res: Response) => {
+adminRouter.get('/users/getAll', async (req: Request, res: Response) => {
     getAllUsers(res);
 });
