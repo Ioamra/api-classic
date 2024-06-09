@@ -18,6 +18,6 @@ export default class RoutingConfig {
         app.use('/auth', authRouter);
         app.use('/test', Middleware.requireAuthentication, testRouter);
         app.use('/users', Middleware.requireAuthentication, usersRouter);
-        app.use('/admin', Middleware.requireAuthentication, adminRouter);
+        app.use('/admin', Middleware.requireAdmin, adminRouter);
     }
 };
