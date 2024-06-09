@@ -1,4 +1,4 @@
-import jwt, { SignOptions, VerifyOptions, Algorithm } from "jsonwebtoken";
+import jwt, { SignOptions, Algorithm } from "jsonwebtoken";
 import * as dotenv from "dotenv";
 dotenv.config({ path: "./src/config/.env" });
 
