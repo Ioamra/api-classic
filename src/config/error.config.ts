@@ -1,0 +1,17 @@
+export enum ErrorCode {
+    WRONG_PASSWORD = "Code 410",
+    MAIL_NOT_FOUND = "Code 420",
+    PASSWORD_DONT_MATCH = "Code 430",
+    JWT = "Code 440",
+    SEND_MAIL = "Code 450",
+    MISSING_HEADERS = "Code 460",
+    ACCESS_DENIED = "Code 470",
+    CONTENT_NOT_ALLOWED_FOR_USER = "Code 471",
+    ID_USER_NOT_FOUND = "Code 480",
+    UPDATE_FAILED = "Code 490",
+    NO_FILE_SEND = "Code 405",
+    WRONG_FILE_FORMAT = "Code 415",
+    USER_ARCHIVED = "Code 425",
+    INVALID_PASSWORD = "Code 435",
+    APP_NOT_ACCESSIBLE = "Code 455",
+}
