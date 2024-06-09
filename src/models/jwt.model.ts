@@ -14,6 +14,8 @@ export interface AccessToken {
     algorithm: jwt.Algorithm
 }
 
-export interface UserIDJwtPayload {
-    
+export interface AccessTokenDecoded {
+    id_users: number,
+    iat: number,
+    exp: number
 }

@@ -1,7 +1,7 @@
 import { Response } from "express";
-import { pool } from "../../config/db.config";
-import AuthenticationService from "../../config/jwt.config";
-import { Users } from "../../models/users.models";
+import { pool } from "../../../config/db.config";
+import AuthenticationService from "../../../config/jwt.config";
+import { Users } from "../../../models/general-models/users.models";
 
 export const register = async (data: Users.IAddUsers, res: Response) => {
     const client = await pool.connect();

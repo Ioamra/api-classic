@@ -13,8 +13,8 @@ export class MiddlewareFunction {
                 throw ErrorCode.MISSING_HEADERS;
             };
 
-            const decodedToken = AuthenticationService.verifyToken(token);
-            if (typeof decodedToken === 'string') {
+            const decodedToken = AuthenticationService.decodeToken(token);
+            if (!decodedToken) {
                 throw ErrorCode.MISSING_HEADERS;
             }
 

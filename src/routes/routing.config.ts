@@ -1,9 +1,10 @@
 import cors from 'cors';
 import express, { Express } from 'express';
 import helmet from "helmet";
-import { testRouter } from './test-routes/test.routes';
+import { testRouter } from './general-routes/test.routes';
 import { Middleware } from '../middleware/middleware.config';
-import { authRouter } from './auth-routes/auth.routes';
+import { authRouter } from './general-routes/auth.routes';
+import { usersRouter } from './general-routes/users.routes';
 
 export default class RoutingConfig {
     public static init(app: Express): void {
@@ -15,5 +16,6 @@ export default class RoutingConfig {
         // Import des routes
         app.use('/auth', authRouter);
         app.use('/test', Middleware.requireAuthentication, testRouter);
+        app.use('/users', Middleware.requireAuthentication, usersRouter);
     }
 };

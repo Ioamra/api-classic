@@ -1,6 +1,6 @@
 import { Response } from "express";
-import { pool } from "../../config/db.config";
-import AuthenticationService from "../../config/jwt.config";
+import { pool } from "../../../config/db.config";
+import AuthenticationService from "../../../config/jwt.config";
 
 export const logIn = async (email_users: string, password_users: string, res: Response) => {
     const client = await pool.connect();

@@ -1,5 +1,5 @@
 import { Response } from "express";
-import { pool } from "../../config/db.config";
+import { pool } from "../../../config/db.config";
 
 export const testMyAPI = async (test: string, res: Response) => {
     const client = await pool.connect();

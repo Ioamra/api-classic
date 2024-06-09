@@ -1,6 +1,6 @@
 import express, { Request, Response } from "express";
-import { testMyAPI } from '../../controllers/test-controllers/test.controller'
-import { testMyAPISocket } from "../../controllers/test-controllers/test-socket.controller";
+import { testMyAPISocket } from "../../controllers/general-controllers/test-controllers/testMyAPISocket.controller";
+import { testMyAPI } from "../../controllers/general-controllers/test-controllers/testMyAPI.controller";
 
 export const testRouter = express.Router();
 

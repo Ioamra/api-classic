@@ -1,6 +1,6 @@
 import { Response } from "express";
-import { pool } from "../../config/db.config";
-import { getSocketIO } from "../../config/socket.config";
+import { pool } from "../../../config/db.config";
+import { getSocketIO } from "../../../config/socket.config";
 
 export const testMyAPISocket = async (res: Response) => {
     const client = await pool.connect();
