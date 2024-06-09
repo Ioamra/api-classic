@@ -5,6 +5,7 @@ import { testRouter } from './general-routes/test.routes';
 import { Middleware } from '../middleware/middleware.config';
 import { authRouter } from './general-routes/auth.routes';
 import { usersRouter } from './general-routes/users.routes';
+import { adminRouter } from './admin-routes/usersAdmin.routes';
 
 export default class RoutingConfig {
     public static init(app: Express): void {
@@ -17,6 +18,6 @@ export default class RoutingConfig {
         app.use('/auth', authRouter);
         app.use('/test', Middleware.requireAuthentication, testRouter);
         app.use('/users', Middleware.requireAuthentication, usersRouter);
-        app.use('/admin', Middleware.requireAdmin, usersRouter);
+        app.use('/admin', Middleware.requireAdmin, adminRouter);
     }
 };

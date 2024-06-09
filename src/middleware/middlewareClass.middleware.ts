@@ -50,11 +50,11 @@ export class MiddlewareFunction {
             if (decodedToken.exp < currentTime) {
                 throw 'expired token';
             }
-
+            
             if (decodedToken.role_users != 'admin') {
                 throw 'not admin';
             }
-            
+
             const { rows } = await client.query(`SELECT role_users FROM users WHERE id_users = $1`, [decodedToken.id_users])
             if (rows[0].role_users != 'admin') {
                 throw 'nice try but you are not admin';
