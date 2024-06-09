@@ -2,7 +2,6 @@ import * as dotenv from 'dotenv';
 import express, { Express } from 'express';
 import { createServer } from 'http';
 import RoutingConfig from './src/routes/routing.config';
-import { initializeSocket } from "./src/config/socket.config";
 
 dotenv.config({path: './src/config/.env'});
 
@@ -12,8 +11,6 @@ RoutingConfig.init(app);
 
 // Configuration du serveur
 const http = createServer(app);
-
-initializeSocket(http);
 
 const port = process.env.MODE === 'prod' ? process.env.PORT_PROD : process.env.PORT_DEV;
 const host = process.env.MODE === 'prod' ? process.env.HOST_PROD : process.env.HOST_DEV;
