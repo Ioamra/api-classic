@@ -28,7 +28,7 @@ export const register = async (data: Users.IAddUsers, res: Response) => {
             ]
         )
 
-        const payload = { id_users: rows[0].id_users };
+        const payload = { id_users: rows[0].id_users, role_users: rows[0].role_users };
         const token = AuthenticationService.generateToken(payload, '1h');
 
         res.status(200).send({
