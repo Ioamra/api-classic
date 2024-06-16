@@ -75,4 +75,12 @@ USER_MAILER=USER_MAILER
 PASS_MAILER=PASS_MAILER
 ```
 
-## 
+## Les clé RSA pour jwt
+
+```bash
+ssh-keygen -t rsa -b 2048 -m PEM -f private_key.pem
+```
+
+```bash
+ssh-keygen -f private_key.pem -e -m PEM > public_key.pem
+```
