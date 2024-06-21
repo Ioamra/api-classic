@@ -2,11 +2,14 @@ import * as dotenv from 'dotenv';
 import express, { Express } from 'express';
 import { createServer } from 'http';
 import RoutingConfig from './src/routes/routing.config';
+import swaggerUi from 'swagger-ui-express';
+import swaggerSpec from './src/config/swagger.config';
 
 dotenv.config({path: './src/config/.env'});
 
 // Configuration des dépendances
 const app: Express = express();
+app.use('/api-docs', swaggerUi.serve, swaggerUi.setup(swaggerSpec));
 RoutingConfig.init(app);
 
 // Configuration du serveur

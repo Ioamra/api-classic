@@ -3,6 +3,16 @@ import { pool } from "../../../config/db.config";
 import AuthenticationService from "../../../config/jwt.config";
 import { Users } from "../../../models/general-models/users.models";
 
+/**
+ * La fonction `register` est une fonction asynchrone qui ajoute un nouvel utilisateur à une base de
+ * données, gère les cas de validation et d'erreur et renvoie un jeton en cas d'enregistrement réussi.
+ * @param data - Le paramètre `data` dans la fonction `register` est un objet de type
+ * `Users.IAddUsers`. Il contient les propriétés suivantes :
+ * @param {Response} res - Le paramètre `res` dans la fonction `register` est de type `Response`, qui
+ * est généralement utilisé dans Express.js pour renvoyer une réponse au client effectuant la demande.
+ * Il vous permet de définir le code d'état, de renvoyer les données dans le corps de la réponse et
+ * d'effectuer d'autres opérations liées à la réponse.
+ */
 export const register = async (data: Users.IAddUsers, res: Response) => {
     const client = await pool.connect();
 

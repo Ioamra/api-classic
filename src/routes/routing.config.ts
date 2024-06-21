@@ -14,10 +14,39 @@ export default class RoutingConfig {
         app.use(cors());
         app.use(helmet());
 
-        // Import des routes
+        /**
+         * @swagger
+         * tags:
+         *   name: Authentication
+         *   description: API endpoints for user authentication
+         */
         app.use('/auth', authRouter);
+
+        // Routes de test
+        /**
+         * @swagger
+         * tags:
+         *   name: Testing
+         *   description: API endpoints for testing purposes
+         */
         app.use('/test', Middleware.requireAuthentication, testRouter);
+
+        // Routes d'utilisateurs
+        /**
+         * @swagger
+         * tags:
+         *   name: Users
+         *   description: API endpoints for user-related operations
+         */
         app.use('/users', Middleware.requireAuthentication, usersRouter);
+
+        // Routes d'administration
+        /**
+         * @swagger
+         * tags:
+         *   name: Admin
+         *   description: API endpoints for admin operations
+         */
         app.use('/admin', Middleware.requireAdmin, adminRouter);
     }
-};
+}
