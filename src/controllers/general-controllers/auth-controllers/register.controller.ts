@@ -2,6 +2,7 @@ import { Response } from "express";
 import { pool } from "../../../config/db.config";
 import AuthenticationService from "../../../config/jwt.config";
 import { Users } from "../../../models/general-models/users.models";
+import { sha3_512 } from 'js-sha3';
 
 /**
  * La fonction `register` est une fonction asynchrone qui ajoute un nouvel utilisateur à une base de
@@ -34,7 +35,7 @@ export const register = async (data: Users.IAddUsers, res: Response) => {
                 data.username_users, 
                 data.name_users, 
                 data.email_users, 
-                data.password_users
+                sha3_512(data.password_users)
             ]
         )
 

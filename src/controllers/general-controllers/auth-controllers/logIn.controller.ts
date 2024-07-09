@@ -1,6 +1,7 @@
 import { Response } from "express";
 import { pool } from "../../../config/db.config";
 import AuthenticationService from "../../../config/jwt.config";
+import { sha3_512 } from 'js-sha3';
 
 /**
  * La fonction « logIn » de TypeScript gère l'authentification des utilisateurs en interrogeant la base
@@ -23,14 +24,14 @@ export const logIn = async (email_users: string, password_users: string, res: Re
 
     try {
         await client.query("BEGIN");
-
-        const { rows, rowCount } = await client.query(`SELECT id_users, role_users FROM users WHERE email_users = $1 AND password_users = $2;`, [email_users, password_users])
+        
+        const { rows, rowCount } = await client.query(`SELECT id_users, role_users FROM users WHERE email_users = $1 AND password_users = $2;`, [email_users, sha3_512(password_users)])
         if (rowCount == 0) {
             throw "user not found"
         }
         const payload = { id_users: rows[0].id_users, role_users: rows[0].role_users };
         const token = AuthenticationService.generateToken(payload);
-
+console.log(token)
         res.status(200).send({
             message: "Connection successfull",
             data: token
